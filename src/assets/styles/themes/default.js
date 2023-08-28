@@ -11,5 +11,10 @@ export default {
       light: '#BCBCBC',
       dark: '#222222',
     },
+    danger: {
+      light: '#F97171',
+      main: '#FC5050',
+      dark: '#F63131',
+    },
   },
 };
