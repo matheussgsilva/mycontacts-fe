@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import isEmailValid from '../../utils/isEmailValid';
+import formatPhone from '../../utils/formatPhone';
 import useErrors from '../../hooks/useErrors';
 
 import { ButtonContainer } from './styles';
@@ -17,7 +18,11 @@ export default function ContactForm({ buttonLabel }) {
   const [phone, setPhone] = useState('');
   const [category, setCategory] = useState('');
 
-  const { setError, removeError, getErrorMessageByFieldName } = useErrors();
+  const {
+    setError, removeError, getErrorMessageByFieldName, errors,
+  } = useErrors();
+
+  const isFormValid = (name && errors.length === 0);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -39,27 +44,32 @@ export default function ContactForm({ buttonLabel }) {
     }
   };
 
+  const handlePhoneChange = (e) => {
+    setPhone(formatPhone(e.target.value));
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log({
-      name, email, phone, category,
-    });
+    // console.log({
+    //   name, email, phone, category,
+    // });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
       <FormGroup error={getErrorMessageByFieldName('name')}>
         <Input
           error={getErrorMessageByFieldName('name')}
           value={name}
-          placeholder="Nome"
+          placeholder="Nome *"
           onChange={handleNameChange}
         />
       </FormGroup>
 
       <FormGroup error={getErrorMessageByFieldName('email')}>
         <Input
+          type="email"
           error={getErrorMessageByFieldName('email')}
           value={email}
           placeholder="E-mail"
@@ -71,7 +81,8 @@ export default function ContactForm({ buttonLabel }) {
         <Input
           value={phone}
           placeholder="Telefone"
-          onChange={(e) => setPhone(e.target.value)}
+          onChange={handlePhoneChange}
+          maxLength="15"
         />
       </FormGroup>
 
@@ -87,7 +98,7 @@ export default function ContactForm({ buttonLabel }) {
       </FormGroup>
 
       <ButtonContainer>
-        <Button type="submit">
+        <Button type="submit" disabled={!isFormValid}>
           {buttonLabel}
         </Button>
       </ButtonContainer>
