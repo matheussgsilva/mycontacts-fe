@@ -51,24 +51,21 @@ export const Header = styled.header`
     }
 `;
 
-export const ListContainer = styled.div`
+export const ListHeader = styled.header`
     margin-top: 24px;
+    margin-bottom: 8px;
 
-    header {
-        margin-bottom: 8px;
+    button {
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
 
-        button {
-            background: transparent;
-            border: none;
-            display: flex;
-            align-items: center;
-
-            span {
-                margin-right: 8px;
-                color: ${({ theme }) => theme.colors.primary.main};
-                font-weight: bold;
-            }
-    }
+        span {
+            margin-right: 8px;
+            color: ${({ theme }) => theme.colors.primary.main};
+            font-weight: bold;
+        }
     }
 `;
 
