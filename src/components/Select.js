@@ -7,7 +7,6 @@ export default styled.select`
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     height: 52px;
     border-radius: 4px;
-    border: none;
     outline: none;
     padding: 0 16px;
     font-size: 16px;
@@ -21,5 +20,6 @@ export default styled.select`
     &[disabled] {
       background-color: ${({ theme }) => theme.colors.gray.lighter};
       border-color: ${({ theme }) => theme.colors.gray.light};
+      opacity: 1;
     }
 `;

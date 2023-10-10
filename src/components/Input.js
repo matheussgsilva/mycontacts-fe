@@ -7,7 +7,6 @@ export default styled.input`
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     height: 52px;
     border-radius: 4px;
-    border: 2px solid transparent;
     outline: none;
     padding: 0 16px;
     font-size: 16px;
@@ -22,4 +21,9 @@ export default styled.input`
         color: ${theme.colors.danger.main};
         border-color: ${theme.colors.danger.main} !important;
     `}
+
+    &[disabled] {
+      background-color: ${({ theme }) => theme.colors.gray.lighter};
+      border-color: ${({ theme }) => theme.colors.gray.light};
+    }
 `;
