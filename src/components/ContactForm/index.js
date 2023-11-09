@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import isEmailValid from '../../utils/isEmailValid';
-import formatPhone from '../../utils/formatPhone';
 import useErrors from '../../hooks/useErrors';
 import CategoriesService from '../../services/CategoriesService';
+import formatPhone from '../../utils/formatPhone';
+import isEmailValid from '../../utils/isEmailValid';
 
 import { ButtonContainer } from './styles';
 
+import Button from '../Button';
 import FormGroup from '../FormGroup';
 import Input from '../Input';
 import Select from '../Select';
-import Button from '../Button';
 
 export default function ContactForm({ buttonLabel, onSubmit }) {
   const [name, setName] = useState('');
@@ -80,9 +80,9 @@ export default function ContactForm({ buttonLabel, onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
-      <FormGroup error={getErrorMessageByFieldName('name')}>
+      <FormGroup $error={getErrorMessageByFieldName('name')}>
         <Input
-          error={getErrorMessageByFieldName('name')}
+          $error={getErrorMessageByFieldName('name')}
           value={name}
           placeholder="Nome *"
           onChange={handleNameChange}
@@ -93,7 +93,7 @@ export default function ContactForm({ buttonLabel, onSubmit }) {
       <FormGroup error={getErrorMessageByFieldName('email')}>
         <Input
           type="email"
-          error={getErrorMessageByFieldName('email')}
+          $error={getErrorMessageByFieldName('email')}
           value={email}
           placeholder="E-mail"
           onChange={handleEmailChange}
