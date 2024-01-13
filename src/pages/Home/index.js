@@ -28,6 +28,7 @@ import sad from '../../assets/images/sad.svg';
 
 import Button from '../../components/Button';
 import Loader from '../../components/Loader';
+import Modal from '../../components/Modal';
 
 import ContactsService from '../../services/ContactsService';
 import formatPhone from '../../utils/formatPhone';
@@ -80,6 +81,16 @@ export default function Home() {
   return (
     <Container>
       <Loader isLoading={isLoading} />
+
+      <Modal
+        danger
+        title="Tem certeza que deseja remover o contato Matheus Silva?"
+        confirmLabel="Deletar"
+        onCancel={() => alert('Cancelou')}
+        onConfirm={() => alert('Confirmou')}
+      >
+        <p>Corpo do modal</p>
+      </Modal>
 
       {contacts.length > 0 && (
         <InputSearchContainer>
