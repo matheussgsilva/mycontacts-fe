@@ -30,6 +30,7 @@ import Button from '../../components/Button';
 import Loader from '../../components/Loader';
 
 import ContactsService from '../../services/ContactsService';
+import formatPhone from '../../utils/formatPhone';
 
 export default function Home() {
   const [contacts, setContacts] = useState([]);
@@ -162,7 +163,7 @@ export default function Home() {
                   {contact.category_name && <small>{contact.category_name}</small>}
                 </div>
                 <span>{contact.email}</span>
-                <span>{contact.phone}</span>
+                <span>{formatPhone(contact.phone)}</span>
               </div>
 
               <div className="actions">
