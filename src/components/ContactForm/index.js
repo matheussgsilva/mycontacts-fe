@@ -34,7 +34,7 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit }, ref) => {
     setFieldsValues: (contact) => {
       setName(contact.name);
       setEmail(contact.email);
-      setPhone(contact.phone);
+      setPhone(formatPhone(contact.phone));
       setCategoryId(contact.category_id);
     },
   }), []);
