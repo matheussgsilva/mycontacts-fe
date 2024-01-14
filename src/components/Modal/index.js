@@ -1,4 +1,4 @@
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
 import { Container, Footer, Overlay } from './styles';
@@ -14,6 +14,7 @@ export default function Modal({
   onCancel,
   onConfirm,
   visible,
+  isLoading,
 }) {
   if (!visible) {
     return null;
@@ -33,6 +34,7 @@ export default function Modal({
             type="button"
             className="cancel-button"
             onClick={onCancel}
+            disabled={isLoading}
           >
             {cancelLabel}
           </button>
@@ -40,6 +42,7 @@ export default function Modal({
             type="button"
             danger={danger}
             onClick={onConfirm}
+            isLoading={isLoading}
           >
             {confirmLabel}
           </Button>
@@ -51,18 +54,20 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  danger: Proptypes.bool,
-  title: Proptypes.string.isRequired,
-  children: Proptypes.node.isRequired,
-  cancelLabel: Proptypes.string,
-  confirmLabel: Proptypes.string,
-  onCancel: Proptypes.func.isRequired,
-  onConfirm: Proptypes.func.isRequired,
-  visible: Proptypes.bool.isRequired,
+  danger: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  cancelLabel: PropTypes.string,
+  confirmLabel: PropTypes.string,
+  onCancel: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 Modal.defaultProps = {
   danger: false,
   cancelLabel: 'Cancelar',
   confirmLabel: 'Confirmar',
+  isLoading: false,
 };

@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { StyledButton } from './styles';
 
@@ -26,12 +26,12 @@ export default function Button({
 }
 
 Button.propTypes = {
-  type: propTypes.string,
-  disabled: propTypes.bool,
-  isLoading: propTypes.bool,
-  children: propTypes.node.isRequired,
-  danger: propTypes.bool,
-  onClick: propTypes.func,
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  danger: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
