@@ -65,14 +65,13 @@ export default function useHome() {
 
   const handleCloseDeleteModal = () => {
     setIsDeleteModalVisible(false);
-    setContactBeingDeleted(null);
   };
 
   const handleConfirmDeleteContact = async () => {
     try {
       setIsLoadingDelete(true);
 
-      await ContactsService.handleDeleteContact(contactBeingDeleted.id);
+      await ContactsService.deleteContact(contactBeingDeleted.id);
 
       toast({
         type: 'success',
