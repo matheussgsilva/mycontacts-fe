@@ -27,6 +27,7 @@
         "react-hooks/exhaustive-deps": "warn",
         "class-methods-use-this": "off",
         "no-empty": ["error", { "allowEmptyCatch": true }],
-        "react/display-name": "off"
+        "react/display-name": "off",
+        "react/require-default-props": "off"
     }
 }
